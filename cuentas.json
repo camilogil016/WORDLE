@@ -1,0 +1,7 @@
+{
+  "cuentas": [
+    { "usuario": "Admin", "contraseña": "1234" },
+    { "usuario": "Meza", "contraseña": "1234" },
+    { "usuario": "Camilo", "contraseña": "1234" }
+  ]
+}
