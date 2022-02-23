@@ -3,6 +3,7 @@ const ps = require("prompt-sync");
 const prompt = ps({sigint: true});
 let palabraCorrecta = "AUDIO";
 
+// Función que pide la palabra. Solo permite palabras de 5 caracteres unicamente.
 function pedirPalabra() {
     let palabra = prompt("Palabra: ");
     while(palabra.length != 5 || /[^a-z]/i.test(palabra)) {
@@ -12,6 +13,7 @@ function pedirPalabra() {
     return palabra;
 }
 
+// Función que verifica si la palabra tenga caracteres validos.
 function verificarPalabra(palabra) {
     for(let i=0;i<palabra.length;i++) {
         for(let j=0;j<palabraCorrecta.length;j++) {
@@ -28,12 +30,14 @@ function verificarPalabra(palabra) {
     console.log("");
 }
 
+// Función que imprime la tabla.
 function imprimirTabla(tabla) {
     for(let i=0;i<6;i++) {
         verificarPalabra(tabla[i]);
     }
 }
 
+// Función Principal.
 async function main() {
     console.clear();
     let tabla = [

@@ -7,6 +7,7 @@ const path = require('path');
 
 const ruta = path.join(__dirname, 'cuentas.json');
 
+// Función que agarra las cuentas del archivo cuentas.json.
 const cargarCuentas = async  () =>{
     //Obtiene la ruta del archivo de datos
     // Verifica la ruta del archivo
@@ -20,6 +21,7 @@ const cargarCuentas = async  () =>{
     }
 };
 
+// Función que agrega una nueva cuenta a cuentas.json.
 async function agregarCuentas (datos, nuevaCuenta){
     //console.log(datos);
     //console.log(nuevaBanda);
@@ -34,10 +36,12 @@ async function agregarCuentas (datos, nuevaCuenta){
     return datos;
 }
 
+//Función que se encarga de comprobar que la cuenta no exista ya.
 async function comprobarCuentas(datos, nombreCuenta) {
 
 }
 
+// Función principal.
 async function main() {
     console.clear();
     let cuentas = await cargarCuentas();
