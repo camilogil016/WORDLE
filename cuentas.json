@@ -1,7 +1,28 @@
 {
   "cuentas": [
-    { "usuario": "Admin", "contraseña": "1234" },
-    { "usuario": "Meza", "contraseña": "1234" },
-    { "usuario": "Camilo", "contraseña": "1234" }
+    {
+      "usuario": "Admin",
+      "contraseña": "1234",
+      "Nombre": "Admin",
+      "estadisticas": []
+    },
+    {
+      "usuario": "Meza",
+      "contraseña": "1234",
+      "Nombre": "Admin",
+      "estadisticas": []
+    },
+    {
+      "usuario": "Camilo",
+      "contraseña": "1234",
+      "Nombre": "Admin",
+      "estadisticas": []
+    },
+    {
+      "usuario": "Luis",
+      "contraseña": "1234",
+      "Nombre": "Luis Suarez",
+      "estadisticas": []
+    }
   ]
 }

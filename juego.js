@@ -38,7 +38,7 @@ function imprimirTabla(tabla) {
 }
 
 // Función Principal.
-async function main() {
+async function juego() {
     console.clear();
     let tabla = [
         "00000",
@@ -62,4 +62,6 @@ async function main() {
     //console.clear(); //Limpia la consola
 }
 
-main();
+module.exports = {
+    juego
+}
