@@ -30,10 +30,27 @@ function verificarPalabra(palabra) {
     console.log("");
 }
 
+function verificarPalabra2(palabra) {
+    let verificacion = [...Array(palabra.length)].map(e => Array(2));
+    let letras = palabraCorrecta;
+    for(let i=0;i<palabra.length;i++) {
+        verificacion[i][0] = palabra.charAt(i);
+        verificacion[i][1] = 0;
+    }
+    while(letras != "") {
+        for(let i=0;i<palabra.length;i++) {
+
+        }
+        letras = letras.substring(1);
+    }
+    console.log(verificacion)
+}
+
 // Función que imprime la tabla.
 function imprimirTabla(tabla) {
     for(let i=0;i<6;i++) {
         verificarPalabra(tabla[i]);
+
     }
 }
 
@@ -41,24 +58,26 @@ function imprimirTabla(tabla) {
 async function juego() {
     console.clear();
     let tabla = [
-        "00000",
-        "00000",
-        "00000",
-        "00000",
-        "00000",
-        "00000",
+        ["00000", ""],
+        ["00000", ""],
+        ["00000", ""],
+        ["00000", ""],
+        ["00000", ""],
+        ["00000", ""],
     ]
+    verificarPalabra2("sexo");
+    let z = `\x1b[33mA\x1b[32mB`;
     //let palabra = pedirPalabra();
     //palabra = palabra.toUpperCase();
     //verificarPalabra("TONTE");
-    for(let i=0;i<6;i++) {
+    /*for(let i=0;i<6;i++) {
         imprimirTabla(tabla);
         let palabra = pedirPalabra();
         palabra = palabra.toUpperCase();
         tabla[i] = palabra;
         console.clear();
-    }
-    imprimirTabla(tabla);
+    }*/
+    //imprimirTabla(tabla);
     //console.clear(); //Limpia la consola
 }
 

@@ -38,6 +38,7 @@ async function agregarCuentas(datos, nuevaCuenta) {
 
 //Función que se encarga de comprobar que la cuenta no exista ya.
 async function comprobarCuentas(datos, nombreCuenta) {
+
   for (let i = 0; i < datos.cuentas.length; i++) {
     if (datos.cuentas[i].usuario == nombreCuenta) {
       return true;
@@ -45,6 +46,7 @@ async function comprobarCuentas(datos, nombreCuenta) {
     }
   }
   return false;
+
 }
 
 // Función principal.
@@ -73,6 +75,7 @@ async function crearCuenta(cuentas) {
   }
 
   //cuentas = await agregarCuentas(cuentas, nuevaCuenta);
+
 }
 
 async function iniciarSesion(cuentas) {
