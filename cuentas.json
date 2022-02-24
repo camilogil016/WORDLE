@@ -1,7 +1,8 @@
 {
-  "cuentas": [
-    { "usuario": "Admin", "contraseña": "1234" },
-    { "usuario": "Meza", "contraseña": "1234" },
-    { "usuario": "Camilo", "contraseña": "1234" }
+  "users": [
+    { "name": "Admin", "password": "1234" },
+    { "name": "Meza", "password": "1234" },
+    { "name": "Camilo", "password": "1234" },
+    { "name": "Nuevo", "password": "1234" }
   ]
 }

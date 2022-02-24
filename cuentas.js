@@ -38,7 +38,6 @@ async function agregarCuentas (datos, nuevaCuenta){
 
 //Función que se encarga de comprobar que la cuenta no exista ya.
 async function comprobarCuentas(datos, nombreCuenta) {
-
 }
 
 // Función principal.
@@ -53,7 +52,8 @@ async function main() {
         name: nombreCuenta,
         year: contraseñaCuenta,
     }
-    cuentas = await agregarCuentas(cuentas, nuevaCuenta);
+    //cuentas = await agregarCuentas(cuentas, nuevaCuenta);
+    comprobarCuentas(cuentas,nombreCuenta)
 }
 
 main();
