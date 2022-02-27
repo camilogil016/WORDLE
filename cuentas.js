@@ -78,7 +78,8 @@ async function crearCuenta(cuentas) {
 
 }
 
-async function iniciarSesion(cuentas) {
+async function iniciarSesion() {
+  let cuentas = await cargarCuentas();
   let usuario = prompt("Username: ");
   let password = prompt("Contraseña: ");
   for (let i = 0; i < cuentas.cuentas.length; i++) {
@@ -92,9 +93,11 @@ async function iniciarSesion(cuentas) {
   }
 }
 async function main() {
-    console.clear();
-  let cuentas = await cargarCuentas();
-  iniciarSesion(cuentas);
+  console.clear();
+  iniciarSesion();
   //crearCuenta();
+}
+module.exports ={
+  iniciarSesion,
 }
 main();
