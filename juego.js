@@ -14,36 +14,63 @@ function pedirPalabra() {
 }
 
 // Función que verifica si la palabra tenga caracteres validos.
-function verificarPalabra(palabra) {
-    for(let i=0;i<palabra.length;i++) {
-        for(let j=0;j<palabraCorrecta.length;j++) {
-            if(palabra.charAt(i) == palabraCorrecta.charAt(j) && i!=j) {    // Si la letra esta en la zona equivocada
-                process.stdout.write(`\x1b[33m`);j=6;   // Amarillo
-            } else if(palabra.charAt(i) == palabraCorrecta.charAt(j) && i==j) { // Si la letra esta en el lugar correcto
-                process.stdout.write(`\x1b[32m`);j=6;   // Verde
-            } else {    // Si la letra no existe
-                process.stdout.write(`\x1b[37m`);   // Gris
-            }
-        }
-        process.stdout.write(`${palabra.charAt(i)}`);
-    }   
-    console.log("");
-}
 
-function verificarPalabra2(palabra) {
+async function verificarPalabra(palabra) {
     let verificacion = [...Array(palabra.length)].map(e => Array(2));
     let letras = palabraCorrecta;
     for(let i=0;i<palabra.length;i++) {
+        let letra = letras.charAt(0);
         verificacion[i][0] = palabra.charAt(i);
         verificacion[i][1] = 0;
-    }
-    while(letras != "") {
-        for(let i=0;i<palabra.length;i++) {
-
+        for(let j=0;j<palabraCorrecta.length;j++) {
+            if(letra == palabra.charAt(j)) {
+                if(palabraCorrecta.charAt(j) == palabra.charAt(j)) {
+                    verificacion[j][1] = 2;
+                } else {
+                    let verificar = false;
+                    for(let x=j;x<palabraCorrecta.length;x++) {
+                        if(palabraCorrecta.charAt(x) == palabra.charAt(x) && palabra.charAt(x) == letra) {
+                            console.log("Hola")
+                            verificar = true;
+                        }
+                    }
+                    if(verificar == false) {
+                        verificacion[j][1] = 1;
+                    }
+                    
+                }
+            }
         }
         letras = letras.substring(1);
     }
-    console.log(verificacion)
+    console.log(verificacion);
+}
+
+async function verificarPalabra2(palabra) {
+    let verificacion = [...Array(palabra.length)].map(e => Array(2));
+    let letras = palabraCorrecta;
+    for(let i=0,c=0;i<palabra.length;i++) {
+        verificacion[i][0] = palabra.charAt(i);
+        verificacion[i][1] = 0;
+        if(palabra.charAt(i) == palabraCorrecta.charAt(i)) {
+            verificacion[i][1] = 2;
+            letras = letras.substring(0,i-c)+letras.substring(i+1-c,letras.length);
+            c++;
+            //console.log(letras);
+        }
+    }
+    while(letras.length != 0) {
+        for(let i=0;i<palabra.length;i++) {
+            if(verificacion[i][1] != 2) {
+                if(letras.charAt(0) == palabra.charAt(i)) {
+                    verificacion[i][1] = 1;
+                    letras = letras.substring(1);
+                }
+            }
+        }
+        letras = letras.substring(1);
+    }
+    console.log(verificacion);
 }
 
 // Función que imprime la tabla.
@@ -57,6 +84,7 @@ function imprimirTabla(tabla) {
 // Función Principal.
 async function juego() {
     console.clear();
+    console.log("---------------------------------------------------------------------------");
     let tabla = [
         ["00000", ""],
         ["00000", ""],
@@ -65,7 +93,8 @@ async function juego() {
         ["00000", ""],
         ["00000", ""],
     ]
-    verificarPalabra2("sexo");
+    await verificarPalabra2("MAAAA");
+    console.log(palabraCorrecta.indexOf("Ñ"))
     let z = `\x1b[33mA\x1b[32mB`;
     //let palabra = pedirPalabra();
     //palabra = palabra.toUpperCase();
@@ -84,3 +113,5 @@ async function juego() {
 module.exports = {
     juego
 }
+
+juego();
