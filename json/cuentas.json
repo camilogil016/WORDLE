@@ -23,6 +23,18 @@
       "contraseña": "1234",
       "Nombre": "Luis Suarez",
       "estadisticas": []
+    },
+    {
+      "usuario": "Prueba",
+      "contraseña": "1234",
+      "Nombre": "Prueba",
+      "estadisticas": []
+    },
+    {
+      "usuario": "1234",
+      "contraseña": "1234",
+      "Nombre": "1234",
+      "estadisticas": []
     }
   ]
 }
