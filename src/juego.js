@@ -28,16 +28,15 @@ async function verificarPalabra(palabra) {
             //console.log(letras);
         }
     }
-    while(letras.length != 0) {
-        for(let i=0;i<palabra.length;i++) {
-            if(verificacion[i][1] != 2) {
-                if(letras.charAt(0) == palabra.charAt(i)) {
-                    verificacion[i][1] = 1;
-                    letras = letras.substring(1);
-                }
-            }
+  }
+  while (letras.length != 0) {
+    for (let i = 0; i < palabra.length; i++) {
+      if (verificacion[i][1] != 2) {
+        if (letras.charAt(0) == palabra.charAt(i)) {
+          verificacion[i][1] = 1;
+          letras = letras.substring(1);
         }
-        letras = letras.substring(1);
+      }
     }
     return verificacion;
 }
@@ -75,5 +74,5 @@ async function juego() {
 }
 
 module.exports = {
-    juego
-}
+  juego,
+};

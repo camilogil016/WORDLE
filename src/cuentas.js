@@ -35,11 +35,12 @@ async function comprobarCuentas(datos, nombreCuenta) {
 
 // Función que se encarga de crear una cuenta
 async function crearCuenta() {
-  console.clear();                                    //Limpia la consola
+  //await console.clear();                                    //Limpia la consola
   let cuentas = await cargarCuentas();
   let username = await ask("Username:");
   if (await comprobarCuentas(cuentas, username) == true) {  
-    console.log("Esta cuenta ya existe.");
+    console.log("Esta cuenta ya existe. \nIntentelo nuevamente");
+    await crearCuenta();
   } else {
     let contraseñaCuenta = await ask("Contraseña:");
     let nombres = await ask("Nombres de usuario:");
