@@ -106,5 +106,3 @@ async function juego() {
 module.exports = {
     juego
 }
-
-juego();
