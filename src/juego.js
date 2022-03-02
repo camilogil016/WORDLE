@@ -28,15 +28,16 @@ async function verificarPalabra(palabra) {
             //console.log(letras);
         }
     }
-    while (letras.length != 0) {
-        for (let i = 0; i < palabra.length; i++) {
-            if (verificacion[i][1] != 2) {
-                if (letras.charAt(0) == palabra.charAt(i)) {
-                verificacion[i][1] = 1;
-                letras = letras.substring(1);
+    while(letras.length != 0) {
+        for(let i=0;i<palabra.length;i++) {
+            if(verificacion[i][1] != 2) {
+                if(letras.charAt(0) == palabra.charAt(i)) {
+                    verificacion[i][1] = 1;
+                    letras = letras.substring(1);
                 }
             }
         }
+        letras = letras.substring(1);
     }
     return verificacion;
 }
@@ -56,7 +57,7 @@ async function juego() {
     ];
     let intento=1;
     for(let i=0;i<6;i++,intento++) {
-        await imprimir(palabras);
+        imprimir(palabras);
         console.log(`La palabra correcta es: ${palabraCorrecta}`);
         let palabra = await pedirPalabra();
         palabra = palabra.toUpperCase();
@@ -65,7 +66,7 @@ async function juego() {
             break;
         }
     }
-    await imprimir(palabras);
+    imprimir(palabras);
     if(intento <= 6) {
         console.log(`FELICIDADES! GANO EN EL INTENTO NUMERO ${intento}`);
     } else {
