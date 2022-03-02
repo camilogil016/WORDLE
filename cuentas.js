@@ -1,5 +1,6 @@
 "use strict";
 const ps = require("prompt-sync");
+const chalk = require("chalk");
 const prompt = ps({ sigint: true });
 const { juego } = require("./juego");
 const fs = require("fs");
@@ -23,9 +24,6 @@ const cargarCuentas = async () => {
 
 // Función que agrega una nueva cuenta a cuentas.json.
 async function agregarCuentas(datos, nuevaCuenta) {
-  //console.log(datos);
-  //console.log(nuevaBanda);
-  //agregarBandas
   datos.cuentas.push(nuevaCuenta);
   console.log(datos);
   // Convierte el objeto en string
@@ -38,11 +36,11 @@ async function agregarCuentas(datos, nuevaCuenta) {
 
 //Función que se encarga de comprobar que la cuenta no exista ya.
 async function comprobarCuentas(datos, nombreCuenta) {
-
+  
   for (let i = 0; i < datos.cuentas.length; i++) {
     if (datos.cuentas[i].usuario == nombreCuenta) {
+      console.log("SI EXISTE");
       return true;
-      break;
     }
   }
   return false;
@@ -50,11 +48,12 @@ async function comprobarCuentas(datos, nombreCuenta) {
 }
 
 // Función principal.
-async function crearCuenta(cuentas) {
-  console.clear();
+async function crearCuenta() {
+  let cuentas = await cargarCuentas();
   let username = prompt("Username: ");
-
-  if (comprobarCuentas(cuentas, username) == true) {
+  let verificacion = await comprobarCuentas(cuentas, username);
+  console.log(verificacion);
+  if (verificacion === true) {
     console.log("Existe la cuenta");
   } else {
     let contraseñaCuenta = prompt("Contraseña: ");
@@ -89,15 +88,15 @@ async function iniciarSesion() {
     ) {
       juego();
       break;
+    }else{
+      console.log(chalk.red("Usuario o contraseña son incorrectos"));
+      break;
     }
   }
 }
-async function main() {
-  console.clear();
-  iniciarSesion();
-  //crearCuenta();
-}
+
 module.exports ={
   iniciarSesion,
+  crearCuenta
 }
-main();
+
