@@ -15,7 +15,9 @@ async function main() {
             break;
 
         case 2:
-            crearCuenta();
+            console.clear();
+            await crearCuenta();
+            await main();
             break;
         
         case 3:
