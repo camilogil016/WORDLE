@@ -1,14 +1,14 @@
-"use strict";
-const ps = require("prompt-sync");
-const prompt = ps({sigint: true});
-let palabraCorrecta = "AUDIO";
+const {ask} = require('./input.js')
+const {palabraAleatoria} = require('./palabra.js')
+
+let palabraCorrecta;
 
 // Función que pide la palabra. Solo permite palabras de 5 caracteres unicamente.
 function pedirPalabra() {
-    let palabra = prompt("Palabra: ");
+    let palabra = ask("Palabra:");
     while(palabra.length != 5 || /[^a-z]/i.test(palabra)) {
         console.log("Escriba unicamente una palabra de 5 letras.")
-        palabra = prompt("Palabra: ");
+        palabra = ask("Palabra:");
     }
     return palabra;
 }
@@ -73,14 +73,6 @@ async function verificarPalabra2(palabra) {
     console.log(verificacion);
 }
 
-// Función que imprime la tabla.
-function imprimirTabla(tabla) {
-    for(let i=0;i<6;i++) {
-        verificarPalabra(tabla[i]);
-
-    }
-}
-
 // Función Principal.
 async function juego() {
     console.clear();
@@ -93,8 +85,9 @@ async function juego() {
         ["00000", ""],
         ["00000", ""],
     ]
+    palabraCorrecta = await palabraAleatoria();
     await verificarPalabra2("MAAAA");
-    console.log(palabraCorrecta.indexOf("Ñ"))
+    console.log(palabraCorrecta)
     let z = `\x1b[33mA\x1b[32mB`;
     //let palabra = pedirPalabra();
     //palabra = palabra.toUpperCase();
