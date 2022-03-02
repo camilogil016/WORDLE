@@ -1,7 +1,7 @@
 const chalk = require("chalk");
 
 function teclado() {
-  let letras = "QWERTYUIOPASDFGHJKLÑ ZXCVBNM";
+  let letras = "QWERTYUIOPASDFGHJKLÑ >ZXCVBNM";
   let parte = "";
   for (i in letras) {
     if (letras[i] != " ") {
@@ -20,22 +20,35 @@ function teclado() {
   }
 }
 
-function pantalla() {
-  let palabras = ["AUDIO", "     ", "     ", "     ", "     "];
-  let palabra;
-  let pared = chalk.cyan("|");
-  for (let i = 0; i < palabras.length; i++) {
-    palabra = palabras[i];
-    console.log(chalk.cyan("\t---------------------"));
-    console.log(
-      `\t${pared} ${palabra[0]} ${pared} ${palabra[1]} ${pared} ${palabra[2]} ${pared} ${palabra[3]} ${pared} ${palabra[4]} ${pared}`
-    );
+async function pantalla(palabras) {
+  for(let i=0; i<palabras.length ;i++) {
+    console.log(chalk.cyan("\t-----------------------"));
+    let pared = chalk.cyan(" | ");
+    process.stdout.write("\t");
+    for(let j=0; j<palabras[i].length;j++) {
+      process.stdout.write(pared);
+      if(palabras[i][j][1] == 0) {
+        process.stdout.write(chalk.white(`${palabras[i][j][0]}`));
+      } else if(palabras[i][j][1] == 1) {
+        process.stdout.write(chalk.yellow(`${palabras[i][j][0]}`));
+      } else if(palabras[i][j][1] == 2) {
+        process.stdout.write(chalk.green(`${palabras[i][j][0]}`));
+      }
+    }
+    process.stdout.write(pared);
+    console.log("");
   }
-  console.log(chalk.cyan("\t---------------------"));
+  console.log(chalk.cyan("\t-----------------------"));
 }
-function main() {
+
+function imprimir(palabras) {
   console.clear();  
-  pantalla();
+  pantalla(palabras);
+  console.log("");
   teclado();
+  console.log("");
 }
-main();
+
+module.exports = {
+  imprimir
+}
