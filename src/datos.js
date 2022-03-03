@@ -21,6 +21,10 @@ const cargarDatos = async (ruta) => {
     return datos;
   }
 
+  async function editarDatos() {
+    
+  }
+
 module.exports ={
     rutaCuentas, rutaEstadisticas, cargarDatos, agregarDatos
   }

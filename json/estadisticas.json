@@ -1,6 +1,6 @@
 {
   "cuentas": [
-    { "usuario": "Admin", "estadisticas": [0, 0, 0, 0, 0, 0, 0] },
+    { "usuario": "Admin", "estadisticas": [5, 3, 2, 0, 0, 1, 9] },
     { "usuario": "Meza", "estadisticas": [0, 0, 0, 0, 0, 0, 0] },
     { "usuario": "Camilo", "estadisticas": [0, 0, 0, 0, 0, 0, 0] },
     { "usuario": "Luis", "estadisticas": [0, 0, 0, 0, 0, 0, 0] },
