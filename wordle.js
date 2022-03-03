@@ -8,8 +8,6 @@ async function main() {
   let opcion = await menu();
   switch (opcion.numero) {
     case 1:
-      let c = "CAMILO";
-      console.log(c[1]);
       while (true) {
         let verificar = await iniciarSesion();
         if (verificar[0]) {

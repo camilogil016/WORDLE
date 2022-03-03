@@ -1,4 +1,4 @@
-const {rutaEstadisticas, cargarDatos} = require("./datos.js")
+const {rutaEstadisticas, cargarDatos, actualizarDatos} = require("./datos.js")
 
 async function partidasTotales(estadisticas) {
     let total = 0;
@@ -14,6 +14,17 @@ async function cargarUsuario(username) {
         if(datos.cuentas[i].usuario == username) {
             let estadisticas = datos.cuentas[i].estadisticas;
             return estadisticas;
+            break;
+        }
+    }
+}
+
+async function actualizarEstadisticas(username, jugada) {
+    let datos = await cargarDatos(rutaEstadisticas);
+    for(let i=0;i<datos.cuentas.length;i++) {
+        if(datos.cuentas[i].usuario == username) {
+            datos.cuentas[i].estadisticas[jugada] = datos.cuentas[i].estadisticas[jugada] + 1;
+            actualizarDatos(datos,rutaEstadisticas);
             break;
         }
     }
@@ -45,5 +56,5 @@ async function imprimirEstadisticas(username) {
 }
 
 module.exports = {
-    imprimirEstadisticas
+    imprimirEstadisticas, actualizarEstadisticas
 }

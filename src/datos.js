@@ -21,10 +21,17 @@ const cargarDatos = async (ruta) => {
     return datos;
   }
 
-  async function editarDatos() {
-    
+  /**
+   * 
+   * @param {Recine los datos} datos 
+   * @param {Recibe la ruta donde se guardara} ruta 
+   */
+  async function actualizarDatos(datos, ruta) {
+    let cadena = JSON.stringify(datos); // Convierte el objeto en string
+    fs.writeFileSync(ruta, cadena);     // Escribe la cadena en el archivo JSON
+    return datos;
   }
 
 module.exports ={
-    rutaCuentas, rutaEstadisticas, cargarDatos, agregarDatos
+    rutaCuentas, rutaEstadisticas, cargarDatos, agregarDatos, actualizarDatos
   }

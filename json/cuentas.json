@@ -1,1 +1,12 @@
-{"cuentas":[{"usuario":"Admin","contraseña":"1234","Nombre":"Admin"},{"usuario":"Meza","contraseña":"1234","Nombre":"Admin"},{"usuario":"Camilo","contraseña":"1234","Nombre":"Admin"},{"usuario":"Luis","contraseña":"1234","Nombre":"Luis Suarez"},{"usuario":"Prueba","contraseña":"1234","Nombre":"Prueba"},{"usuario":"1234","contraseña":"1234","Nombre":"1234"},{"usuario":"Daniela","contraseña":"12345","Nombre":"Daniela "},{"usuario":"Fernaando","contraseña":"12345","Nombre":"fer"}]}
+{
+  "cuentas": [
+    { "usuario": "Admin", "contraseña": "1234", "Nombre": "Admin" },
+    { "usuario": "Meza", "contraseña": "1234", "Nombre": "Admin" },
+    { "usuario": "Camilo", "contraseña": "1234", "Nombre": "Admin" },
+    { "usuario": "Luis", "contraseña": "1234", "Nombre": "Luis Suarez" },
+    { "usuario": "Prueba", "contraseña": "1234", "Nombre": "Prueba" },
+    { "usuario": "1234", "contraseña": "1234", "Nombre": "1234" },
+    { "usuario": "Daniela", "contraseña": "12345", "Nombre": "Daniela " },
+    { "usuario": "Fernaando", "contraseña": "12345", "Nombre": "fer" }
+  ]
+}

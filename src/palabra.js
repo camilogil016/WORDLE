@@ -1,3 +1,4 @@
+const { Console } = require('console');
 const fs = require('fs');
 const path = require('path');
 
@@ -12,7 +13,19 @@ async function cargarPalabras() {
         // retorna los datos
         return datos;
     }
-} 
+}
+
+async function verificarPalabraExistente(palabra) {
+    let datos = await cargarPalabras();
+    let x = false;
+    for(let i=0;i<datos.palabras.length;i++) {
+        if(datos.palabras[i] == palabra) {
+            x = true;
+            break;
+        }
+    }
+    return x;
+}
 
 async function palabraAleatoria() {
     let aleatorio = Math.round(Math.random() * 1000);
@@ -23,5 +36,5 @@ async function palabraAleatoria() {
 }
 
 module.exports = {
-    palabraAleatoria
+    palabraAleatoria, verificarPalabraExistente
 }

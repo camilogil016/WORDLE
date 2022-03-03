@@ -41,8 +41,10 @@ async function pantalla(palabras) {
     process.stdout.write("\t");
     for(let j=0; j<palabras[i].length;j++) {
       process.stdout.write(pared);
-      if(palabras[i][j][1] == 0) {
+      if(palabras[i][j][1] == -1) {
         process.stdout.write(chalk.white(`${palabras[i][j][0]}`));
+      } if(palabras[i][j][1] == 0) {
+        process.stdout.write(chalk.gray(`${palabras[i][j][0]}`));
       } else if(palabras[i][j][1] == 1) {
         process.stdout.write(chalk.yellow(`${palabras[i][j][0]}`));
       } else if(palabras[i][j][1] == 2) {
