@@ -7,6 +7,7 @@ let palabraCorrecta;
 // Función que pide la palabra. Solo permite palabras de 5 caracteres unicamente.
 async function pedirPalabra() {
     let palabra = await ask("Palabra:");
+    //Se pide y garantiza que se ingrese una palabra de 5 letras y que este entre la A y la Z
     while(palabra.length != 5 || /[^a-z]/i.test(palabra)) {
         console.log("Escriba unicamente una palabra de 5 letras.")
         palabra = await ask("Palabra:");
@@ -19,9 +20,10 @@ async function verificarPalabra(palabra) {
     let verificacion = [...Array(palabra.length)].map(e => Array(2));
     let letras = palabraCorrecta;
     for(let i=0,c=0;i<palabra.length;i++) {
-        verificacion[i][0] = palabra.charAt(i);
+        //verificacion[i][0] = palabra[i];    
+        verificacion[i][0] = palabra[i];
         verificacion[i][1] = 0;
-        if(palabra.charAt(i) == palabraCorrecta.charAt(i)) {
+        if(palabra[i] == palabraCorrecta[i]) {
             verificacion[i][1] = 2;
             letras = letras.substring(0,i-c)+letras.substring(i+1-c,letras.length);
             c++;
@@ -31,7 +33,7 @@ async function verificarPalabra(palabra) {
     while(letras.length != 0) {
         for(let i=0;i<palabra.length;i++) {
             if(verificacion[i][1] != 2) {
-                if(letras.charAt(0) == palabra.charAt(i)) {
+                if(letras[0] == palabra[i]) {
                     verificacion[i][1] = 1;
                     letras = letras.substring(1);
                 }

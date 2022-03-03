@@ -1,15 +1,29 @@
 const chalk = require("chalk");
 
-function teclado() {
+function teclado(palabras) {
   let letras = "QWERTYUIOPASDFGHJKLÑ >ZXCVBNM";
   let parte = "";
+  for (let i = 0; i < palabras.length; i++){
+    for(let j = 0; j < palabras[i].length; j++){
+      for(k in letras){
+        if(k == palabras[i][j][0]){
+          if(palabras[i][j][1] == 0) {
+            letras[k]= chalk.bgWhite(`${palabras[i][j][0]}`);
+          } else if(palabras[i][j][1] == 1) {
+            letras[k]= chalk.bgYellow(`${palabras[i][j][0]}`);
+          } else if(palabras[i][j][1] == 2) {
+            letras[k]= chalk.bgGreen(`${palabras[i][j][0]}`);
+          }
+          console.log(letras[k]);
+        }else{
+          letras[k] = chalk.bgGray(k);
+        }        
+      }
+    }
+  }
+  console.log(letras);
   for (i in letras) {
     if (letras[i] != " ") {
-      if (letras[i] == "E") {
-        parte += chalk.red(` ${letras[i]} `) + " ";
-      } else {
-        parte += chalk.bgBlue(` ${letras[i]} `) + " ";
-      }
       if (letras[i] === "P" || letras[i] === "Ñ" || letras[i] === "M") {
         console.log(parte);
         parte = "";
@@ -45,7 +59,7 @@ function imprimir(palabras) {
   console.clear();  
   pantalla(palabras);
   console.log("");
-  teclado();
+  teclado(palabras);
   console.log("");
 }
 
