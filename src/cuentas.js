@@ -49,7 +49,7 @@ async function iniciarSesion() {
   for (let i = 0; i < cuentas.cuentas.length; i++) {
     if (cuentas.cuentas[i].usuario == usuario && cuentas.cuentas[i].contraseña == password) {
       incorrecto = false;
-      return true;
+      return [true,usuario];
       break;
     }
   }

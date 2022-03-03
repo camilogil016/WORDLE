@@ -8,8 +8,9 @@ async function main() {
     let opcion = await menu();
     switch(opcion.numero) {
         case 1:
-            if(await iniciarSesion()) {
-                await menuJuego();
+            let verificar = await iniciarSesion();
+            if(verificar[0]) {
+                await menuJuego(verificar[1]);
             } else {
                 console.log("El usuario y contraseña no son correctos.");
             }

@@ -43,7 +43,7 @@ async function verificarPalabra(palabra) {
 }
 
 // Función Principal.
-async function juego() {
+async function juego(username) {
     console.clear();
     palabraCorrecta = await palabraAleatoria();
     console.log(`La palabra correcta es: ${palabraCorrecta}`);
@@ -68,9 +68,9 @@ async function juego() {
     }
     imprimir(palabras);
     if(intento <= 6) {
-        console.log(`FELICIDADES! GANO EN EL INTENTO NUMERO ${intento}`);
+        console.log(`FELICIDADES 🏆! GANO EN EL INTENTO NUMERO ${intento}`);
     } else {
-        console.log("Game over!");
+        console.log("Game over! 💀");
     }
 }
 

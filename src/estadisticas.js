@@ -22,19 +22,28 @@ async function cargarUsuario(username) {
 async function imprimirEstadisticas(username) {
     let estadisticas = await cargarUsuario(username);
     let total = await partidasTotales(estadisticas);
-    let perdidas = estadisticas[6];
-    let victorias = (perdidas/total)*100;
-    console.log(`Partidas jugadas: ${total}`)
-    console.log(`Porcentaje de Victorias: ${victorias}%`);
+    console.clear();
     console.log("");
-    for(let i=0;i<estadisticas.length;i++) {
-        let porcentaje = (estadisticas[i]/total)*100;
-        if(i<6) {
-            console.log(`${i+1}: ${estadisticas[i]} ✅ (${porcentaje}%)`)
-        } else {
-            console.log(`X: ${estadisticas[i]} ❌ (${porcentaje}%)`)
+    if(total == 0) {
+        console.log("Aun no has jugado una partida!");
+    } else {
+        let perdidas = estadisticas[6];
+        let victorias = (perdidas/total)*100;
+        console.log(`Partidas jugadas: ${total}`)
+        console.log(`Porcentaje de Victorias: ${victorias}%`);
+        console.log("");
+        for(let i=0;i<estadisticas.length;i++) {
+            let porcentaje = (estadisticas[i]/total)*100;
+            if(i<6) {
+                console.log(`${i+1}: ${estadisticas[i]} ✅ (${porcentaje}%)`)
+            } else {
+                console.log(`X: ${estadisticas[i]} ❌ (${porcentaje}%)`)
+                console.log(""); console.log(""); console.log(""); console.log("");
+            }
         }
     }
 }
 
-imprimirEstadisticas("Admin");
+module.exports = {
+    imprimirEstadisticas
+}
