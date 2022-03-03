@@ -1,5 +1,6 @@
 const {menu} = require("./src/input.js")
 const {juego} = require("./src/juego.js")
+const {menuJuego} = require("./src/menuJuego")
 const {iniciarSesion, crearCuenta} = require("./src/cuentas.js")
 
 async function main() {
@@ -8,7 +9,7 @@ async function main() {
     switch(opcion.numero) {
         case 1:
             if(await iniciarSesion()) {
-                await juego();
+                await menuJuego();
             } else {
                 console.log("El usuario y contraseña no son correctos.");
             }

@@ -1,0 +1,11 @@
+{
+  "cuentas": [
+    { "usuario": "Admin", "estadisticas": [0, 0, 0, 0, 0, 0, 0] },
+    { "usuario": "Meza", "estadisticas": [0, 0, 0, 0, 0, 0, 0] },
+    { "usuario": "Camilo", "estadisticas": [0, 0, 0, 0, 0, 0, 0] },
+    { "usuario": "Luis", "estadisticas": [0, 0, 0, 0, 0, 0, 0] },
+    { "usuario": "Prueba", "estadisticas": [0, 0, 0, 0, 0, 0, 0] },
+    { "usuario": "1234", "estadisticas": [0, 0, 0, 0, 0, 0, 0] },
+    { "usuario": "Daniela", "estadisticas": [0, 0, 0, 0, 0, 0, 0] }
+  ]
+}

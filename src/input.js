@@ -53,6 +53,25 @@ const menu = async () => {
   return inquirer.prompt(opciones);
 }
 
+const menuJugador = async () => {
+  const opciones = [
+
+    {
+        name : 'numero',
+        type: "list",
+        message: "Seleccionar opcion",
+        choices: [
+            {value: 1, name: "Crear un nuevo juego"},
+            {value: 2, name: "Consultar estadísticas"},
+            {value: 3, name: "Cerrar sesión"},
+
+        ],
+    }
+  ];
+
+  return inquirer.prompt(opciones);
+}
+
 module.exports = {
-    menu, ask
+    menu, menuJugador, ask
 }
