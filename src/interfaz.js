@@ -2,63 +2,73 @@ chalk = require("chalk");
 
 function teclado(palabras) {
   let letras = [
-    "Q",
-    "W",
-    "E",
-    "R",
-    "T",
-    "Y",
-    "U",
-    "I",
-    "O",
-    "P",
-    "A",
-    "S",
-    "D",
-    "F",
-    "G",
-    "H",
-    "J",
-    "K",
-    "L",
-    "Ñ",
-    " ",
-    "Z",
-    "X",
-    "C",
-    "V",
-    "B",
-    "N",
-    "M",
+    ["Q", -1],
+    ["W", -1],
+    ["E", -1],
+    ["R", -1],
+    ["T", -1],
+    ["Y", -1],
+    ["U", -1],
+    ["I", -1],
+    ["O", -1],
+    ["P", -1],
+    ["A", -1],
+    ["S", -1],
+    ["D", -1],
+    ["F", -1],
+    ["G", -1],
+    ["H", -1],
+    ["J", -1],
+    ["K", -1],
+    ["L", -1],
+    ["Ñ", -1],
+    [" ", -1],
+    ["Z", -1],
+    ["X", -1],
+    ["C", -1],
+    ["V", -1],
+    ["B", -1],
+    ["N", -1],
+    ["M", -1],
   ];
-  let parte = "";
   for (let i = 0; i < palabras.length; i++) {
     for (let j = 0; j < palabras[i].length; j++) {
-      if (letras.some((x) => x == palabras[i][j][0])) {
-        let indice = letras.indexOf(palabras[i][j][1]);
-        if (palabras[i][j][1] == 0) {
-          letras[indice] = chalk.bgWhite(`${palabras[i][j][0]}`);
-          console.log("No existe");
-        } else if (palabras[i][j][1] == 1) {
-          letras[indice] = chalk.bgYellow(`${palabras[i][j][0]}`);
-          console.log("Esta mal");
-        } else if (palabras[i][j][1] == 2) {
-          letras[indice] = chalk.bgGreen(`${palabras[i][j][0]}`);
-          console.log("Esta nice");
+      for (k in letras) {
+        if (palabras[i][j][0] == letras[k][0]) {
+          if (palabras[i][j][1] == 0) {
+            letras[k][1]=0;
+            //parte += chalk.bgRed(`${letras[k]}`) + " ";
+          } else if (palabras[i][j][1] == 1) {
+            letras[k][1]=1;
+            //parte += chalk.bgYellow(`${palabras[i][j][0]}`) + " ";
+          } else if (palabras[i][j][1] == 2) {
+            letras[k][1]=2;
+            //parte += chalk.bgGreen(`${palabras[i][j][0]}`) + " ";
+          }
         }
-      }
+      }  
     }
   }
 
+  let parte = "";
+
   for (i in letras) {
-    if (letras[i] != " ") {
-      parte += letras[i] + " ";
-      if (letras[i] === "P" || letras[i] === "Ñ" || letras[i] === "M") {
+    if (letras[i][0] != " ") {
+      if(letras[i][1]== 0){
+        parte += chalk.bgRed(` ${letras[i][0]} `) + " ";
+      }else if(letras[i][1]== 1){
+        parte += chalk.bgYellow(` ${letras[i][0]} `) + " ";
+      }if(letras[i][1]== 2){
+        parte += chalk.bgGreen(` ${letras[i][0]} `) + " ";
+      }else{
+        parte += chalk.bgGray(` ${letras[i][0]} `) + " ";
+      }
+      if (letras[i][0] === "P" || letras[i][0] === "Ñ" || letras[i][0] === "M") {
         console.log(parte);
         parte = "";
       }
     } else {
-      parte += ` ${letras[i]} ` + " ";
+      parte += ` ${letras[i][0]} ` + " ";
     }
   }
 }
