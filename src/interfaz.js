@@ -35,18 +35,15 @@ function teclado(palabras) {
     for (let j = 0; j < palabras[i].length; j++) {
       for (k in letras) {
         if (palabras[i][j][0] == letras[k][0]) {
-          if (palabras[i][j][1] == 0) {
-            letras[k][1]=0;
-            //parte += chalk.bgRed(`${letras[k]}`) + " ";
-          } else if (palabras[i][j][1] == 1) {
-            letras[k][1]=1;
-            //parte += chalk.bgYellow(`${palabras[i][j][0]}`) + " ";
-          } else if (palabras[i][j][1] == 2) {
-            letras[k][1]=2;
-            //parte += chalk.bgGreen(`${palabras[i][j][0]}`) + " ";
+          if (palabras[i][j][1] == 0 && letras[k][1] == -1) {
+            letras[k][1] = 0;
+          } else if (palabras[i][j][1] == 1 && letras[k][1] == -1) {
+            letras[k][1] = 1;
+          } else if (palabras[i][j][1] == 2 && letras[k][1] == -1) {
+            letras[k][1] = 2;
           }
         }
-      }  
+      }
     }
   }
 
@@ -54,16 +51,21 @@ function teclado(palabras) {
 
   for (i in letras) {
     if (letras[i][0] != " ") {
-      if(letras[i][1]== 0){
+      if (letras[i][1] == 0) {
         parte += chalk.bgRed(` ${letras[i][0]} `) + " ";
-      }else if(letras[i][1]== 1){
+      } else if (letras[i][1] == 1) {
         parte += chalk.bgYellow(` ${letras[i][0]} `) + " ";
-      }if(letras[i][1]== 2){
+      }
+      if (letras[i][1] == 2) {
         parte += chalk.bgGreen(` ${letras[i][0]} `) + " ";
-      }else{
+      } else if (letras[i][1] == -1) {
         parte += chalk.bgGray(` ${letras[i][0]} `) + " ";
       }
-      if (letras[i][0] === "P" || letras[i][0] === "Ñ" || letras[i][0] === "M") {
+      if (
+        letras[i][0] === "P" ||
+        letras[i][0] === "Ñ" ||
+        letras[i][0] === "M"
+      ) {
         console.log(parte);
         parte = "";
       }
