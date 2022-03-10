@@ -4,7 +4,7 @@ const {
   cargarDatos,
   agregarDatos,
 } = require("./datos.js");
-const { ask } = require("./input.js");
+const { ask, askPasswords } = require("./input.js");
 var CryptoJS = require("crypto-js");
 require('dotenv').config()
 
@@ -32,10 +32,8 @@ async function crearEstadisticas(username) {
 
 // Función que se encarga de crear una cuenta
 async function crearCuenta() {
-  //await console.clear();                                    //Limpia la consola
   let cuentas = await cargarDatos(rutaCuentas);
-  let username = await ask("Username:");
-  console.log(process.env.SECRET_KEY);
+  let username = await askPasswords("Username:");
   if ((await comprobarCuentas(cuentas, username)) == true) {
     console.log("Esta cuenta ya existe. \nIntentelo nuevamente");
     await crearCuenta();
@@ -48,7 +46,7 @@ async function crearCuenta() {
     let nombres = await ask("Nombres de usuario:");
     let nuevaCuenta = {
       usuario: username,
-      contraseña: contrasenaEn,
+      contrasena: contrasenaEn,
       Nombre: nombres,
     };
     await agregarDatos(cuentas, nuevaCuenta, rutaCuentas);
@@ -59,11 +57,10 @@ async function crearCuenta() {
 async function iniciarSesion() {
   let cuentas = await cargarDatos(rutaCuentas);
   let usuario = await ask("Username:");
-  let password = await ask("Contraseña:");
+  let password = await askPasswords("Contraseña:");
   for (let i = 0; i < cuentas.cuentas.length; i++) {
     var bytes = CryptoJS.AES.decrypt(cuentas.cuentas[i].contrasena, process.env.SECRET_KEY);
     var contrasena = bytes.toString(CryptoJS.enc.Utf8);
-    console.log(contrasena);
     if (
       cuentas.cuentas[i].usuario == usuario &&
       contrasena == password

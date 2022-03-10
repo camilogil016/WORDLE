@@ -23,7 +23,21 @@ async function ask(texto) {
     x = x.answer;
     return x;
 }
+async function askPasswords(texto) {
+  let x = await datosPasswords(texto);
+  x = x.answer;
+  return x;
+}
 
+const datosPasswords = async (texto) => {
+  const opciones = [
+    {
+      name: "answer",
+      type: "password",
+      message: texto,
+    }];
+    return inquirer.prompt(opciones);
+}
 const datos = async (texto) => {
     const opciones = [
       {
@@ -73,5 +87,5 @@ const menuJugador = async () => {
 }
 
 module.exports = {
-    menu, menuJugador, ask
+    menu, menuJugador, ask, askPasswords
 }

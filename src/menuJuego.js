@@ -19,6 +19,8 @@ async function menuJuego(username) {
             case 3:
                 seguir = false;
                 break;
+            default:
+                break;
         }
     }
 }
