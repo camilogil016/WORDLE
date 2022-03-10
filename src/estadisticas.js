@@ -39,12 +39,14 @@ async function imprimirEstadisticas(username) {
         console.log("Aun no has jugado una partida!");
     } else {
         let perdidas = estadisticas[6];
-        let victorias = (perdidas/total)*100;
+        let victorias = ((total-perdidas)/total)*100;
+        victorias = victorias.toFixed(0);
         console.log(`Partidas jugadas: ${total}`)
         console.log(`Porcentaje de Victorias: ${victorias}%`);
         console.log("");
         for(let i=0;i<estadisticas.length;i++) {
             let porcentaje = (estadisticas[i]/total)*100;
+            porcentaje = porcentaje.toFixed(0);
             if(i<6) {
                 console.log(`${i+1}: ${estadisticas[i]} ✅ (${porcentaje}%)`)
             } else {

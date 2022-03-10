@@ -33,12 +33,12 @@ async function crearEstadisticas(username) {
 // Función que se encarga de crear una cuenta
 async function crearCuenta() {
   let cuentas = await cargarDatos(rutaCuentas);
-  let username = await askPasswords("Username:");
+  let username = await ask("Username:");
   if ((await comprobarCuentas(cuentas, username)) == true) {
     console.log("Esta cuenta ya existe. \nIntentelo nuevamente");
     await crearCuenta();
   } else {
-    let contrasenaCuenta = await ask("Contraseña:");
+    let contrasenaCuenta = await askPasswords("Contraseña:");
     var contrasenaEn = CryptoJS.AES.encrypt(
       contrasenaCuenta,
       process.env.SECRET_KEY

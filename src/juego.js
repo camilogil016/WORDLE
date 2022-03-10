@@ -86,6 +86,7 @@ async function juego(username) {
         await actualizarEstadisticas(username,intento-1);
     } else {
         console.log("Game over! 💀");
+        await actualizarEstadisticas(username,intento-1);
     }
 }
 
