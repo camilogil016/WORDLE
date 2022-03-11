@@ -16,9 +16,12 @@ async function cargarPalabras() {
 }
 
 async function verificarPalabraExistente(palabra) {
+    // retorna la información del archivo JSON
     let datos = await cargarPalabras();
     let x = false;
+    // Se hace un ciclo con al finalidad de corroborar que existe la palabra en el JSO
     for(let i=0;i<datos.palabras.length;i++) {
+        // comparación de buscar la palabra
         if(datos.palabras[i] == palabra) {
             x = true;
             break;
@@ -28,8 +31,11 @@ async function verificarPalabraExistente(palabra) {
 }
 
 async function palabraAleatoria() {
+    // Se crea un random para obtener la palabra del archivo
     let aleatorio = Math.round(Math.random() * 1000);
+    // Se obtiene los datos de palabras
     let datos = await cargarPalabras();
+    // luego se extrae la palabra del archivo segun la posición  del random
     let palabra = datos.palabras[aleatorio];
     console.log(palabra);
     return palabra;

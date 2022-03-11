@@ -1,3 +1,4 @@
+// Archivo principal
 const { menu } = require("./src/input.js");
 const { juego } = require("./src/juego.js");
 const { menuJuego } = require("./src/menuJuego");
@@ -6,15 +7,18 @@ const { iniciarSesion, crearCuenta } = require("./src/cuentas.js");
 async function main() {
   console.clear();
   let seguir = true;
+  // while para imprimir el menu y comenzar la jugabilidad
   while (seguir) {
     let opcion = await menu();
+    // tres opciones por medio de un switch
     switch (opcion.numero) {
       case 1:
         while (true) {
-          let verificar = await iniciarSesion();
+          // corresponde al inicio de sesión del juego
+          let verificar = await iniciarSesion(); // retorna el usuario si existe y un booleano con TRUE
           if (verificar[0]) {
             console.clear();
-            await menuJuego(verificar[1]);
+            await menuJuego(verificar[1]);// Se envía por parámetro el nombre de usuario
             break;
             false;
           } else {
@@ -25,12 +29,11 @@ async function main() {
 
       case 2:
         console.clear();
-        await crearCuenta();
-        await main();
+        await crearCuenta(); // Se llama a la función de crear cuenta
         break;
 
       case 3:
-        seguir = false;
+        seguir = false;// Se termina el ciclo
         console.log("Adios!");
         break;
     }
