@@ -4,6 +4,7 @@ const path = require('path');
 
 const ruta = path.join(__dirname, '../json/palabras.json');
 
+//Funcion que se encarga de cargar todas las palabras
 async function cargarPalabras() {
     if(fs.existsSync(ruta)){
         //Abrir el archivo 
@@ -15,6 +16,7 @@ async function cargarPalabras() {
     }
 }
 
+//Funcion que se encarga de verificar si la palabra que digito el usuario existe en el json y devuelve un boolean
 async function verificarPalabraExistente(palabra) {
     // retorna la información del archivo JSON
     let datos = await cargarPalabras();
@@ -30,10 +32,15 @@ async function verificarPalabraExistente(palabra) {
     return x;
 }
 
+//Función que se encarga de generar valor aleatorio y devolver la palabra del archivo palabras.json
 async function palabraAleatoria() {
+<<<<<<< HEAD
     // Se crea un random para obtener la palabra del archivo
     let aleatorio = Math.round(Math.random() * 1000);
     // Se obtiene los datos de palabras
+=======
+    let aleatorio = Math.round(Math.random() * 1000);   //Se elige entre las primeras 1000 palabras
+>>>>>>> 29a366cdb2260df60f1611a85bab519277bb3e04
     let datos = await cargarPalabras();
     // luego se extrae la palabra del archivo segun la posición  del random
     let palabra = datos.palabras[aleatorio];
