@@ -7,6 +7,7 @@
     <title>Votaciones USTA</title>
     <link rel="stylesheet" href="../CSS/interfaz.css">
     <link rel="stylesheet" href="../CSS/formulario.css">
+    <script src="../JS/crearCuenta.js" defer></script>
 </head>
 <body>
     <div class="fondo">
@@ -17,23 +18,24 @@
                 <div class="datos">
                     <h4>Usuario</h4>
                     <br><br><br>
-                    <input type="text">
+                    <input type="text" id="inputUsuario">
                 </div>
                 <div class="datos">
                     <h4>Nombre</h4>
                     <br><br><br>
-                    <input type="text">
+                    <input type="text" id="inputNombre">
                 </div>
                 <div class="datos">
                     <h4>Contraseña</h4>
                     <br><br><br>
-                    <input type="text">
+                    <input type="password" id="inputContrasena">
                 </div>
                 <div class="ingresar">
-                    <a href="./menu.html">
-                        <button><h3>Crear usuario</h3></button>
-                    </a>
+                    <button id="buttonCrear"><h3>Crear usuario</h3></button>
                     <br><br>
+                    <a href="./inicio.html">
+                        <button><h3>Volver</h3></button>
+                    </a>
                 </div>
             </div>
         </div>

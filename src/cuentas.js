@@ -33,19 +33,20 @@ async function crearEstadisticas(username) {
 }
 
 // Función que se encarga de crear una cuenta
-async function crearCuenta() {
+async function crearCuenta(username,nombres,contrasenaCuenta) {
   let cuentas = await cargarDatos(rutaCuentas);
 
-  let username = await askPasswords("Username:");
+  //let username = await askPasswords("Username:");
   // se usa el metodo comprobarCuentas para saber si existe o no existe
 
-  if ((await comprobarCuentas(cuentas, username)) == true) {
+  if ((await comprobarCuentas(cuentas,username)) == true) {
     console.log("Esta cuenta ya existe. \nIntentelo nuevamente");
-    await crearCuenta();
+    //await crearCuenta();
+    return false;
   } else {
 
     // Se pide la contraseña de manera que el usuario no la pueda observar
-    let contrasenaCuenta = await askPasswords("Contraseña:");
+    //let contrasenaCuenta = await askPasswords("Contraseña:");
     // con la contraseña ingresada se hace uso de CryptoJS para encriptar
     //Asi mismo, se hace uso de una variable de entorno y por medio de la libreria dotenv
 
@@ -54,7 +55,7 @@ async function crearCuenta() {
       process.env.SECRET_KEY
     ).toString();
     // Se ingresa los nombres del usuario
-    let nombres = await ask("Nombres de usuario:");
+    //let nombres = await ask("Nombres de usuario:");
     // Se crea un objeto con los parametros para despues agregarlos al JSON
     let nuevaCuenta = {
       usuario: username,
@@ -64,6 +65,7 @@ async function crearCuenta() {
     // se agrega el objeto para ser guardado
     await agregarDatos(cuentas, nuevaCuenta, rutaCuentas);
     await crearEstadisticas(username);
+    return true;
   }
 }
 

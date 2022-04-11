@@ -1,18 +1,17 @@
 const { app } = require("electron");
-const {iniciarSesion} = require("../cuentas.js");
+const {crearCuenta} = require("../cuentas.js");
 
-const botonIngresar = document.getElementById("botonIngresar");
+const buttonCrear = document.getElementById("buttonCrear");
 const inputUsuario = document.getElementById("inputUsuario");
+const inputNombre = document.getElementById("inputNombre");
 const inputContrasena = document.getElementById("inputContrasena");
 const botonCrearCuenta = document.getElementById("botonCrearCuenta");
-const botonCerrar = document.getElementById("botonCerrar");
 
-botonIngresar.addEventListener("click", async () => {
-    if(await iniciarSesion(inputUsuario.value,inputContrasena.value)) {
+buttonCrear.addEventListener("click", async () => {
+    if(await crearCuenta(inputUsuario.value,inputNombre.value,inputContrasena.value)) {
         location.href = "menu.html";
     } else {
         inputUsuario.style.borderColor = "red";
-        inputContrasena.style.borderColor = "red";
     }
   });
 
@@ -26,5 +25,3 @@ inputContrasena.addEventListener("input", () => {
     inputContrasena.style.borderColor = "rgb(205, 240, 205)";
 });
 
-botonCerrar.addEventListener("click", () => {
-  });
