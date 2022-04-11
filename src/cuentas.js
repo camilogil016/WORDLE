@@ -67,12 +67,12 @@ async function crearCuenta() {
   }
 }
 
-async function iniciarSesion() {
+async function iniciarSesion(usuario, password) {
   // Se carga los datos obtenidos del JSON de cuentas
   let cuentas = await cargarDatos(rutaCuentas);
   // Se piden los datos necesarios para iniciarSesion
-  let usuario = await ask("Username:");
-  let password = await askPasswords("Contraseña:");
+  //let usuario = await ask("Username:");
+  //let password = await askPasswords("Contraseña:");
   for (let i = 0; i < cuentas.cuentas.length; i++) {
     // Se desencripta la contraseña del JSON para hacer la comparación
     var bytes = CryptoJS.AES.decrypt(cuentas.cuentas[i].contrasena, process.env.SECRET_KEY);
