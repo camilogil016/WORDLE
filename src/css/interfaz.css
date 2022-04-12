@@ -38,10 +38,12 @@ body{
 }
 
 button{
+    border-radius: 5px;
+    border-style: solid;
+    border-color: rgb(109, 169, 101);
     width: 100%;
     height: 80%;
-
-    background: rgb(39, 182, 39);
+    background: rgb(109, 169, 101);
 
 }
 
