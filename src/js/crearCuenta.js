@@ -9,6 +9,7 @@ const botonCrearCuenta = document.getElementById("botonCrearCuenta");
 
 buttonCrear.addEventListener("click", async () => {
     if(await crearCuenta(inputUsuario.value,inputNombre.value,inputContrasena.value)) {
+        sessionStorage.setItem("username",inputUsuario.value);
         location.href = "menu.html";
     } else {
         inputUsuario.style.borderColor = "red";
