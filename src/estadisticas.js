@@ -58,5 +58,5 @@ async function imprimirEstadisticas(username) {
 }
 
 module.exports = {
-    imprimirEstadisticas, actualizarEstadisticas
+    imprimirEstadisticas, actualizarEstadisticas, partidasTotales, cargarUsuario,
 }
