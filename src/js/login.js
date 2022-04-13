@@ -9,6 +9,7 @@ const botonCerrar = document.getElementById("botonCerrar");
 
 botonIngresar.addEventListener("click", async () => {
     if(await iniciarSesion(inputUsuario.value,inputContrasena.value)) {
+        sessionStorage.setItem("username",inputUsuario.value);
         location.href = "menu.html";
     } else {
         inputUsuario.style.borderColor = "red";
