@@ -69,14 +69,16 @@ h2 {
     width: 9%;
     height: 80%;
     background: #D3D6DA;
-
+    font-size: 18px;
+    font-weight: 700;
 }
 .enter{
     border-color: transparent;
     width: 18%;
     height: 80%;
     background: #D3D6DA;
-
+    font-size: 18px;
+    font-weight: 700;
 }
 
 .Volver {

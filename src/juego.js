@@ -27,6 +27,11 @@ async function pedirPalabra() {
     return palabra;
 }
 
+async function palabraRandom() {
+    palabraCorrecta = await palabraAleatoria();
+    return palabraCorrecta;
+}
+
 // Función que verifica si la palabra tenga caracteres validos.
 async function verificarPalabra(palabra) {
     let verificacion = [...Array(palabra.length)].map(e => Array(2)); //Se crea una matrix vacia
@@ -94,5 +99,5 @@ async function juego(username) {
 }
 
 module.exports = {
-  juego,
+  juego, verificarPalabra, palabraRandom,
 };

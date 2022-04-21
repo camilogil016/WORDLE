@@ -28,4 +28,5 @@ inputContrasena.addEventListener("input", () => {
 });
 
 botonCerrar.addEventListener("click", () => {
+    app.quit();
   });
