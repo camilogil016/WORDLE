@@ -4,10 +4,10 @@ const Cuenta = require('../models/Cuenta')
 // Creación del router
 const router = express.Router();
 
-// Obtener todad las tareas
+// Obtener todad las cuentas
 router.get('/', async (req, res) => {
     try {
-        //Obtiene las tareas
+        //Obtiene las cuentas
         const cuentas = await Cuenta.find();
 
         res.status(200).send(cuentas)
@@ -17,6 +17,32 @@ router.get('/', async (req, res) => {
         res.status(500).send({ mensaje: "Error del servidor" })
     }
 });
+
+// crear Una Cuenta
+router.post('/', async (req, res) => {
+    try {
+        // Obtiene el body
+        const body = req.body;
+
+        // Crea al documento
+        const cuenta = new Cuenta({ 
+            usuario: body.usuario,
+            contrasena: body.contrasena,
+            nombre: body.nombre,
+            estadisticas: body.estadisticas, 
+        });
+
+        //Guarda en la BD
+        const resultado = await cuenta.save();
+
+        //Responde le cliente
+        res.status(201).send(resultado);
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({ mensaje: "Error del servidor" })
+    }
+})
 
 // Exportar el router
 module.exports = router;

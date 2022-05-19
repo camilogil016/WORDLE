@@ -4,7 +4,9 @@ const {
   cargarDatos,
   agregarDatos,
 } = require("./datos.js");
+
 const { ask, askPasswords } = require("./input.js");
+const {create} = require("../../Wordle-Back/src/client/create");
 var CryptoJS = require("crypto-js");
 require('dotenv').config()
 const SECRET_KEY ="asfagasfgfdayt3423532654dfgbh..dsEWE";
@@ -57,14 +59,15 @@ async function crearCuenta(username,nombres,contrasenaCuenta) {
     // Se ingresa los nombres del usuario
     //let nombres = await ask("Nombres de usuario:");
     // Se crea un objeto con los parametros para despues agregarlos al JSON
-    let nuevaCuenta = {
-      usuario: username,
-      contrasena: contrasenaEn,
-      Nombre: nombres,
-    };
+    // let nuevaCuenta = {
+    //   usuario: username,
+    //   contrasena: contrasenaEn,
+    //   Nombre: nombres,
+    // };
     // se agrega el objeto para ser guardado
-    await agregarDatos(cuentas, nuevaCuenta, rutaCuentas);
-    await crearEstadisticas(username);
+    await create(username, nombres,contrasenaEn)
+    // await agregarDatos(cuentas, nuevaCuenta, rutaCuentas);
+    //await crearEstadisticas(username);
     return true;
   }
 }
