@@ -7,7 +7,7 @@ const {
 const { ask, askPasswords } = require("./input.js");
 var CryptoJS = require("crypto-js");
 require('dotenv').config()
-
+const SECRET_KEY ="asfagasfgfdayt3423532654dfgbh..dsEWE";
 
 //Función que se encarga de comprobar que la cuenta no exista ya.
 async function comprobarCuentas(datos, nombreCuenta) {
@@ -52,7 +52,7 @@ async function crearCuenta(username,nombres,contrasenaCuenta) {
 
     var contrasenaEn = CryptoJS.AES.encrypt(
       contrasenaCuenta,
-      process.env.SECRET_KEY
+      SECRET_KEY
     ).toString();
     // Se ingresa los nombres del usuario
     //let nombres = await ask("Nombres de usuario:");
@@ -77,7 +77,7 @@ async function iniciarSesion(usuario, password) {
   //let password = await askPasswords("Contraseña:");
   for (let i = 0; i < cuentas.cuentas.length; i++) {
     // Se desencripta la contraseña del JSON para hacer la comparación
-    var bytes = CryptoJS.AES.decrypt(cuentas.cuentas[i].contrasena, process.env.SECRET_KEY);
+    var bytes = CryptoJS.AES.decrypt(cuentas.cuentas[i].contrasena, SECRET_KEY);
     var contrasena = bytes.toString(CryptoJS.enc.Utf8);
     // Si la condicion es correcta, osea la contraseña existe se retonra un vector para seguir con el algoritmo
     if (

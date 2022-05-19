@@ -1,0 +1,22 @@
+{
+  "main": "./src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icon.icns --prune=true --out=release",
+    "package-win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --icon=assets/logo.ico --prune=true --out=release",
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icon.png --prune=true --out=release"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "console": "^0.7.2",
+    "crypto-js": "^4.1.1",
+    "dotenv": "^16.0.0",
+    "inquirer": "^8.2.0",
+    "prompt-sync": "^4.2.0"
+  },
+  "productName": "WORDLE",
+  "devDependencies": {
+    "electron": "^18.0.4",
+    "electron-packager": "^15.5.1"
+  }
+}

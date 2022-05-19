@@ -41,8 +41,8 @@ async function tecladoFuncion(idTarget) {
           const boton = document.getElementById(`${palabras[i - 1][0]}`);
           console.log(boton.style.background);
           if (palabras[i - 1][1] == "0") {
-            letra.style.color = "red";
             //boton.style.background == "" ? boton.style.background = "red" :;
+            letra.style.color = "red";
             if (
               boton.style.background != "rgb(109, 169, 101)" &&
               boton.style.background != "orange"
@@ -66,7 +66,7 @@ async function tecladoFuncion(idTarget) {
           await actualizarEstadisticas(username, fila - 1);
           location.href = "estadisticas.html";
         } else if (fila == 6) {
-          alert("Game over! 💀");
+          alert(`Game over! 💀. La palabra correcta era ${palabraCorrecta}`);
           await actualizarEstadisticas(username, fila);
           location.href = "estadisticas.html";
         }
@@ -81,22 +81,23 @@ async function tecladoFuncion(idTarget) {
   }
 }
 
-document.addEventListener("keypress", logKey);
+document.addEventListener("keydown", logKey);
 function logKey(e) {
+  console.log(e.code);
   let seguir = false;
-  if(e.code.substring(0,3) == "Key" || e.code == "Enter" || e.code == "Semicolon" || e.code == "Digit0") {
+  if (e.code.substring(0, 3) == "Key" || e.code == "Enter" || e.code == "Semicolon" || e.code == "Digit0") {
     seguir = true;
   }
-  if(seguir) {
-      let letra = "enter";
-      if(e.code.substring(0,3) == "Key") {
-          letra = e.code.substring(3,4);
-      } else if(e.code == "Semicolon") {
-          letra = "Ñ";
-      } else if(e.code == "Digit0") {
-          letra = "borrar";
-      }
-      tecladoFuncion(letra);
+  if (seguir) {
+    let letra = "enter";
+    if (e.code.substring(0, 3) == "Key") {
+      letra = e.code.substring(3, 4);
+    } else if (e.code == "Semicolon") {
+      letra = "Ñ";
+    } else if (e.code == "Digit0") {
+      letra = "borrar";
+    }
+    tecladoFuncion(letra);
   }
 }
 

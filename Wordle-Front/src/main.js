@@ -1,5 +1,6 @@
 // Librerías
 const { app, BrowserWindow } = require("electron");
+const { Menu } = require("electron");
 const url = require("url");
 const path = require("path");
 
@@ -10,8 +11,8 @@ app.on("ready", () => {
   // Creación de la ventana principal
   ventanaPrincipal = new BrowserWindow({
     webPreferences: {
-        nodeIntegration: true,
-        contextIsolation: false,
+      nodeIntegration: true,
+      contextIsolation: false,
     }
   });
   // Carga del archivo index.html en la ventana
@@ -23,4 +24,10 @@ app.on("ready", () => {
     })
   );
   ventanaPrincipal.maximize();
+  // const menuPrincipal =
+  //   Menu.buildFromTemplate(templateMenu);
+  // Menu.setApplicationMenu(menuPrincipal);
 });
+// const templateMenu = [
+  
+// ];
