@@ -14,7 +14,7 @@ const create = async (user,name,password) => {
     console.log(respuesta.status);
 
 }
-create();
+//create();
 
 module.exports = {
     create,
