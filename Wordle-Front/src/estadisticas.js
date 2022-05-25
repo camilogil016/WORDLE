@@ -1,6 +1,6 @@
 const { rutaEstadisticas, cargarDatos, actualizarDatos } = require("./datos.js")
-const { getOne } = require("../../Wordle-Back/src/client/getOne");
-const { update } = require("../../Wordle-Back/src/client/Update");
+const { getOne } = require("./client/getOne");
+const { update } = require("./client/Update");
 
 
 
@@ -25,8 +25,8 @@ async function cargarUsuario(username) {
 
 async function actualizarEstadisticas(username, jugada) {
     // Se obtiene el usuario de la BD
-
     let datos = await getOne(username);
+    
     if (datos[0].usuario == username) {
         datos[0].estadisticas[jugada] = datos[0].estadisticas[jugada] + 1;
         update(username, datos[0].estadisticas);        

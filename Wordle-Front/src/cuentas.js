@@ -6,8 +6,8 @@ const {
 } = require("./datos.js");
 
 const { ask, askPasswords } = require("./input.js");
-const { create } = require("../../Wordle-Back/src/client/create");
-const { getOne } = require("../../Wordle-Back/src/client/getOne");
+const { create } = require("./client/create");
+const { getOne } = require("./client/getOne");
 
 var CryptoJS = require("crypto-js");
 require('dotenv').config()
