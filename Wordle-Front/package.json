@@ -7,6 +7,7 @@
     "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icon.png --prune=true --out=release"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "chalk": "^4.1.2",
     "console": "^0.7.2",
     "crypto-js": "^4.1.1",

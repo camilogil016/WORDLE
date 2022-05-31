@@ -14,6 +14,7 @@ const app = express();
 //Importa la ruta
 const cuentasRoutes = require('./routes/cuentas')
 const inicioRoutes = require('./routes/inicio')
+const palabrasRoutes = require('./routes/palabras')
 
 
 // Middleware
@@ -21,6 +22,7 @@ app.use(express.json());//Habilita el body en el router
 app.use(cors());//
 app.use('/',inicioRoutes);
 app.use('/cuentas', cuentasRoutes)
+app.use('/palabras',palabrasRoutes)
 
 
 // Invoca la función de conexión a la BD
