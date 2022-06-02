@@ -2,7 +2,6 @@ const { Console } = require('console');
 const fs = require('fs');
 const path = require('path');
 
-const ruta = path.join(__dirname, '../json/palabras.json');
 const { getWord } = require("./client/getWord");
 const { getPalabras} = require("./client/getPalabras");
 

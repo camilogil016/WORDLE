@@ -46,18 +46,25 @@ async function verificarPalabra(palabra) {
             //console.log(letras);
         }
     }
+    let seguir = false;
     while(letras.length != 0) { 
         for(let i=0;i<palabra.length;i++) {
-            if(verificacion[i][1] != 2) {
+            if(verificacion[i][1] == 0) {
                 if(letras.charAt(0) == palabra.charAt(i)) { //Verifica si el caracter existe
                     verificacion[i][1] = 1; //1 De lugar incorrecto
                     letras = letras.substring(1);   //Se borra el caracter
+                    seguir = true;
+            
                 } else {
                     verificacion[i][1] = 0;
+                    seguir = false;
                 }
             }
+        
         }
-        letras = letras.substring(1); //Al final se borrara el caracter
+        if(!seguir) {
+            letras = letras.substring(1); //Al final se borrara el caracter
+        }
     }
     return verificacion;
 }

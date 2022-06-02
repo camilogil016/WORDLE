@@ -36,6 +36,7 @@ async function tecladoFuncion(idTarget) {
       }
       if (await verificarPalabraExistente(palabra)) {
         let palabras = await verificarPalabra(palabra);
+        console.log(palabras);
         for (let i = 1; i < 6; i++) {
           const letra = document.getElementById(`${fila}-${i}`);
           const boton = document.getElementById(`${palabras[i - 1][0]}`);
